@@ -1,7 +1,6 @@
-import java.util.*;
 public class GradingSystem{
   public static void main(String[]args){
-    int marks = 56;
+    int x = 56;
     if(x>90){
       System.out.println("Excellent");
     }

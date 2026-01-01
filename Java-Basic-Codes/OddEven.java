@@ -1,4 +1,3 @@
-import java.util.*;
 public class OddEven{
   public static void main(String[]args){
     int x = 15;
@@ -6,7 +5,7 @@ public class OddEven{
       System.out.println(x + " is Even");
     }
     else{
-      System.out.println(y + " is Odd");
+      System.out.println(x + " is Odd");
     }
   }
 }
