@@ -12,7 +12,7 @@ public class BaseToDecimal {
     public static int basetodecimal(int n , int b){
         int rv = 0;
         int p = 1;
-        while(n>0){
+        while(n!=0){
             int r = n%10;
             rv += r*p;
             p *= b;
