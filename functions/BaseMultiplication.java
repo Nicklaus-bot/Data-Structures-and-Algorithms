@@ -55,7 +55,15 @@ public class BaseMultiplication{
 
     public static int baseproduct(int n1 , int n2 , int b){
         int rv = 0;
-        // code here;
+        int p = 1;
+        while(n2 != 0){
+            int d = n2%10;
+            int sprd = singledigitproduct(n1 , d , b);
+
+            rv = baseaddition(rv , sprd*p , b);
+            p*=10;
+            n2 = n2/10;
+        }
         return rv;
     }
 
