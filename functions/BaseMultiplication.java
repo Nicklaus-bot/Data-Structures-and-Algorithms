@@ -12,7 +12,23 @@ public class BaseMultiplication{
 
     public static int singledigitproduct(int n1 , int d , int b){
         int rv = 0;
-        // code here
+        int c = 0;
+        int p = 1;
+
+        while(n1 != 0  || c != 0){
+            int r1 = n1%10;
+            int r = r1*d + c;
+
+            c = r/b;
+            r = r%b;
+
+            rv += r*p;
+            p*=10;
+
+            n1 =  n1/10;
+
+        }
+
         return rv;
     }
 
