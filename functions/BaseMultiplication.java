@@ -7,6 +7,7 @@ public class BaseMultiplication{
         int b = scn.nextInt();
 
         int prd = baseproduct(n1 , n2 , b);
+        System.out.println(prd);
 
     }
 
