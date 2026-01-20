@@ -17,7 +17,7 @@ public class BarChart {
         
         for(int i=max-1 ; i>=0 ; i--){
             for(int j=0 ; j<arr.length ; j++){
-                if(arr[j]>=i){
+                if(arr[j]>i){
                     System.out.print("*\t");
                 }
                 else{
