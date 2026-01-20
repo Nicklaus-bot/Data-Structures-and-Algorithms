@@ -15,7 +15,7 @@ public class SpanInArray {
             if(arr[i] >= max){
                 max = arr[i];
             }
-            if(arr[i] < min){
+            if(arr[i] <= min){
                 min = arr[i];
             }
         }
