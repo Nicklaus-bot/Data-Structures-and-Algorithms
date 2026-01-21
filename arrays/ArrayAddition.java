@@ -15,15 +15,17 @@ public class ArrayAddition{
             arr2[i] = scn.nextInt();
         }
 
-        int [] sum = new int [arr1.length];
+        int [] sum = new int [Math.max(arr1.length , arr2.length)];
 
         int i = arr1.length - 1;
         int j = arr2.length - 1;
         int k = sum.length - 1;
 
         int c = 0;
-        while(i>=0){
-            int s = arr1[i] + arr2[j] + c;
+        while(i>=0  || j>=0){
+            int d1 = i>=0? arr1[i] : 0;
+            int d2 = j>=0? arr2[j] : 0;
+            int s = d1 + d2 + c;
             c = s/10;
             s = s%10;
 
