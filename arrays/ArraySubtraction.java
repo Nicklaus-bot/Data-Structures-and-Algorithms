@@ -29,7 +29,7 @@ public class ArraySubtraction {
             d1 = d1 + c;
 
             int d = d1 - d2;
-            if(d<0){
+            if(d<0){                    // handles last case so diff array becomes positive if larger is subtracted from smaller
                 c = -1;
                 d = d + 10;
             }
