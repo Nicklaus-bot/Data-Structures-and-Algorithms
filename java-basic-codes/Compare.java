@@ -1,7 +1,9 @@
+import java.util.*;
 public class Compare{
   public static void main(String[]args) {
-    int x = 10;
-    int y = 15;
+    Scanner scn = new Scanner(System.in);
+    int x = scn.nextInt();
+    int y = scn.nextInt();
     if(x>y){
       System.out.println(x + " is greater than " + y);
     }
