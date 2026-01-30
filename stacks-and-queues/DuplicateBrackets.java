@@ -1,8 +1,9 @@
+import java.io.*;
 import java.util.*;
 public class DuplicateBrackets {
     public static void main(String[]args) throws Exception{
-        Scanner scn = new Scanner(System.in);
-        String exp = scn.nextLine();
+       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String exp = br.readLine();
 
         Stack<Character> st = new Stack<>();
 
