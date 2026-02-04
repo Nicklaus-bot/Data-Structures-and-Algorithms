@@ -34,7 +34,7 @@ public class InfixConversion {
             }
 
             else if(c=='/' || c=='*' || c=='-' || c=='+'){
-                while(operator.size()>0 && precedence(c)<=precedence(operator.peek()) && operator.peek()!='('){
+                while(!operator.isEmpty() && precedence(c)<=precedence(operator.peek()) && operator.peek()!='('){
                     char op = operator.pop();
 
                     String pre2 = pre.pop();
@@ -57,7 +57,7 @@ public class InfixConversion {
             }
         }
 
-        while(operator.size() > 0){
+        while(!operator.isEmpty()){
             char op = operator.pop();
 
             String pre2 = pre.pop();

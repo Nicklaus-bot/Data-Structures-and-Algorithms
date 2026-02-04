@@ -25,7 +25,7 @@ public class InfixEvaluation{
                 operator.pop();
             }
             else if(c=='/' || c=='*' || c=='-' || c=='+'){
-                while(operator.size()>0 && precedence(c)<=precedence(operator.peek()) && operator.peek() != '('){
+                while(!operator.isEmpty() && precedence(c)<=precedence(operator.peek()) && operator.peek() != '('){
                     int v2 = operand.pop();
                     int v1 = operand.pop();
                     char op = operator.pop();
@@ -39,7 +39,7 @@ public class InfixEvaluation{
             }
         }
 
-        while(operator.size() > 0){
+        while(!operator.isEmpty()){
             int v2 = operand.pop();
             int v1 = operand.pop();
             char op = operator.pop();
