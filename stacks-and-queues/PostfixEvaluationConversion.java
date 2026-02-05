@@ -13,10 +13,25 @@ public class PostfixEvaluationConversion {
             char c = exp.charAt(i);
 
             if(c=='/' || c=='*' || c=='-' || c=='+'){
-                //code here
+                int val2 = val.pop();
+                int val1 = val.pop();
+                int vval = ops(val1 , val2 , c);
+                val.push(vval);
+
+                String inval2 = infix.pop();
+                String inval1 = infix.pop();
+                String vinval = '(' + inval1 + c + inval2 + ')';
+                infix.push(vinval);
+
+                String pre2 = pre.pop();
+                String pre1 = pre.pop();
+                String vpre = c + pre1 + pre2;
+                pre.push(vpre);
             }
             else{
-                //code here
+                pre.push(c + "");
+                infix.push(c + "");
+                val.push(c - '0');
             }
         }
 
