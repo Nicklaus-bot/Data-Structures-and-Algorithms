@@ -35,7 +35,7 @@ public class CelebrityProblem{
                 if(arr[i][pos] == 0 || arr[pos][i] == 1){
                     System.out.println("None");
                     return;
-                }
+                } 
             }
         }
         System.out.println(pos);
