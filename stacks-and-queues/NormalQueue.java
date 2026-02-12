@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 public class NormalQueue{
     public static class NQ{
         int [] arr;
@@ -13,23 +12,49 @@ public class NormalQueue{
         }
 
         public void add(int val){
-            //code here
+            if(size == arr.length){
+                System.out.println("Queue Overflow");
+            }
+            else{
+                int rear = (front + size)%arr.length;
+                arr[rear] = val;
+                size++;
+            }
         }
 
         public int size(){
-            //code here
+            return size;
         }
 
         public int remove(){
-            //code here
+            if(size == 0){
+                System.out.println("Queue Underflow");
+                return -1;
+            }
+            else{
+                int val = arr[front];
+                front = (front+1)%arr.length;
+                size--;
+                return val;
+            }
         }
 
         public int peek(){
-            //code here
+            if(size == 0){
+                System.out.println("Queue Underflow");
+                return -1;
+            }
+            else{
+                return arr[front];
+            }
         }
 
         public void display(){
-            //code here
+            for(int i=0 ; i<size ; i++){
+                int idx = (front + i) % arr.length;
+                System.out.print(arr[idx] + " ");
+            }
+            System.out.println();
         }
         
     }
@@ -60,7 +85,7 @@ public class NormalQueue{
                     System.out.println(val);
                 }
             }
-            else if(str.startsWith("dsplay")){
+            else if(str.startsWith("display")){
                 que.display();
             }
             str = br.readLine();
