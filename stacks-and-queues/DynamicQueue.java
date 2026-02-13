@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.*;
 public class DynamicQueue{
     public static class DQ{
         int [] arr;
@@ -13,23 +12,57 @@ public class DynamicQueue{
         }
 
         public void add(int val){
-            //code here
+            if(size == arr.length){
+                int [] arr2 = new int [2*arr.length];
+                for(int i=0 ; i<size ; i++){
+                    int idx = (front + i)%arr.length;
+                    arr2[i] = arr[idx];
+                }
+                arr = arr2;
+                front = 0;
+                arr[size] = val;
+                size++;
+            }
+            else{
+                int back = (size + front)%arr.length;
+                arr[back] = val;
+                size ++;
+            }
         }
 
         public int size(){
-            //code here
+            return size;
         }
 
         public int remove(){
-            //code here
+            if(size == 0){
+                System.out.println("Queue Underflow");
+                return -1;
+            }
+            else{
+                int val = arr[front];
+                front = (front+1) % arr.length;
+                size--;
+                return val;
+            }
         }
 
         public int peek(){
-            //code here
+            if(size == 0){
+                System.out.println("Queue Underflow");
+                return -1;
+            }
+            else{
+                return arr[front];
+            }
         }
 
         public void display(){
-            //code here
+            for(int i=0 ; i<size ; i++){
+                int idx = (front+i) % arr.length;
+                System.out.print(arr[idx] + " ");
+            }
+            System.out.println();
         }
         
     }
@@ -60,7 +93,7 @@ public class DynamicQueue{
                     System.out.println(val);
                 }
             }
-            else if(str.startsWith("dsplay")){
+            else if(str.startsWith("display")){
                 que.display();
             }
             str = br.readLine();
