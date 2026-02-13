@@ -16,7 +16,18 @@ public class LinkedListFull{
         }
 
         void addLast(int val){
-            
+            Node temp = new Node();
+            temp.data = val;
+            temp.next = null;
+
+            if(size == 0){
+                head = tail = temp;
+            }
+            else{
+                tail.next = temp;
+                tail = temp;
+            }
+            size ++;
         }
 
 
@@ -30,7 +41,8 @@ public class LinkedListFull{
 
         while(str.equals("quit") == false){
             if(str.startsWith("addLast")){
-
+                int val = Integer.parseInt(str.split(" ")[1]);
+                list.addLast(val);
             }
 
             str = br.readLine();
