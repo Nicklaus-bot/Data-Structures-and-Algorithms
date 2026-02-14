@@ -30,6 +30,10 @@ public class LinkedListFull{
             size ++;
         }
 
+        int size(){
+            return size;
+        }
+
 
 
 
@@ -44,6 +48,10 @@ public class LinkedListFull{
                 int val = Integer.parseInt(str.split(" ")[1]);
                 list.addLast(val);
             }
+            else if(str.startsWith("size")){
+                System.out.println(list.size());
+            }
+
 
             str = br.readLine();
         }
