@@ -34,6 +34,13 @@ public class LinkedListFull{
             return size;
         }
 
+        void display(){
+            for(Node temp = head ; temp != null ; temp = temp.next){
+                System.out.print(temp.data + " ");
+            }
+            System.out.println();
+        }
+
 
 
 
@@ -50,6 +57,9 @@ public class LinkedListFull{
             }
             else if(str.startsWith("size")){
                 System.out.println(list.size());
+            }
+            else if(str.startsWith("display")){
+                list.display();
             }
 
 
