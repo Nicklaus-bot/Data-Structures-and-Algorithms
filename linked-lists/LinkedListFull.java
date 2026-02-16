@@ -41,7 +41,20 @@ public class LinkedListFull{
             System.out.println();
         }
 
-
+        void removeFirst(){
+            if(size == 0){
+                System.out.println("List is Empty");
+            }
+            else if(size == 1){
+                head = tail = null;
+                size = 0;
+            }
+            else{
+                Node temp = head;
+                head = temp.next;                  
+                size--;
+            }
+        }
 
 
     }
@@ -60,6 +73,9 @@ public class LinkedListFull{
             }
             else if(str.startsWith("display")){
                 list.display();
+            }
+            else if(str.startsWith("removeFirst")){
+                list.removeFirst();
             }
 
 
