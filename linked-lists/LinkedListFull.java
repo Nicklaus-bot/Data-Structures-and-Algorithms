@@ -56,6 +56,16 @@ public class LinkedListFull{
             }
         }
 
+        int getFirst(){
+            if(size == 0){
+                System.out.println("List is Empmpty");
+                return -1;
+            }
+            else{
+                return head.data;
+            }
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -76,6 +86,12 @@ public class LinkedListFull{
             }
             else if(str.startsWith("removeFirst")){
                 list.removeFirst();
+            }
+            else if(str.startsWith("getFirst")){
+                int val = list.getFirst();
+                if(val != -1){
+                    System.out.println(val);
+                }
             }
 
 
