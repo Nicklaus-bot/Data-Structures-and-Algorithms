@@ -66,6 +66,16 @@ public class LinkedListFull{
             }
         }
 
+        int getLast(){
+            if(size == 0){
+                System.out.println("List is Empty");
+                return -1;
+            }
+            else{
+                return tail.data;
+            }
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -89,6 +99,12 @@ public class LinkedListFull{
             }
             else if(str.startsWith("getFirst")){
                 int val = list.getFirst();
+                if(val != -1){
+                    System.out.println(val);
+                }
+            }
+            else if(str.startsWith("getLast")){
+                int val = list.getLast();
                 if(val != -1){
                     System.out.println(val);
                 }
