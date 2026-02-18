@@ -76,6 +76,20 @@ public class LinkedListFull{
             }
         }
 
+        int getAt(int idx){
+            if(idx<0 || idx>=size){
+                System.out.println("Invalid Argument");
+                return -1;
+            }
+            else{
+                Node temp = head;
+                for(int i=0 ; i<idx ; i++){
+                    temp = temp.next;
+                }
+                return temp.data;
+            }
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -105,6 +119,13 @@ public class LinkedListFull{
             }
             else if(str.startsWith("getLast")){
                 int val = list.getLast();
+                if(val != -1){
+                    System.out.println(val);
+                }
+            }
+            else if(str.startsWith("getAt")){
+                int idx = Integer.parseInt(str.split(" ")[1]);
+                int val = list.getAt(idx);
                 if(val != -1){
                     System.out.println(val);
                 }
