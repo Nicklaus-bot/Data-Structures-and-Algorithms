@@ -90,6 +90,21 @@ public class LinkedListFull{
             }
         }
 
+        void addFirst(int val){
+            Node temp = new Node();
+            temp.data = val;
+            
+            if(size == 0){
+                head = tail = temp;
+                temp.next = null;
+            }
+            else{
+                temp.next = head;
+                head = temp;
+            }
+            size ++;
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -129,6 +144,10 @@ public class LinkedListFull{
                 if(val != -1){
                     System.out.println(val);
                 }
+            }
+            else if(str.startsWith("addFirst")){
+                int val = Integer.parseInt(str.split(" ")[1]);
+                list.addFirst(val);
             }
 
 
