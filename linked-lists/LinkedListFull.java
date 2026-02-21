@@ -105,6 +105,29 @@ public class LinkedListFull{
             size ++;
         }
 
+        void addAt(int val , int idx){
+            if(idx<0 || idx>size){
+                System.out.println("Invalid Argument");
+            }
+            else if(idx == 0){
+                addFirst(val);
+            }
+            else if(idx == size){
+                addLast(val);
+            }
+            else{
+                Node temp = head;
+                for(int i=0 ; i<idx-1 ; i++){
+                    temp = temp.next;
+                }
+                Node n = new Node();
+                n.data = val;
+                n.next = temp.next;
+                temp.next = n;
+                size ++;
+            }
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -148,6 +171,12 @@ public class LinkedListFull{
             else if(str.startsWith("addFirst")){
                 int val = Integer.parseInt(str.split(" ")[1]);
                 list.addFirst(val);
+            }
+            else if(str.startsWith("addAt")){
+                String [] v = str.split(" ");
+                int val = Integer.parseInt(v[1]);
+                int idx = Integer.parseInt(v[2]);
+                list.addAt(val , idx);
             }
 
 
