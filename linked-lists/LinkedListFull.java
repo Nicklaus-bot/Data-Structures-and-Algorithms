@@ -128,6 +128,27 @@ public class LinkedListFull{
             }
         }
 
+        void removeLast(){
+            if(size == 0){
+                System.out.println("Invalid Argument");
+            }
+            else if(size == 1){
+                head = tail = null;
+                size = 0;
+            }
+            else{
+                Node temp = head;
+                for(int i=0 ; i<size-2 ; i++){
+                    temp = temp.next;
+                }
+                tail = temp;
+                temp.next = null;
+                size--;
+            }
+        }
+
+
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -177,6 +198,9 @@ public class LinkedListFull{
                 int val = Integer.parseInt(v[1]);
                 int idx = Integer.parseInt(v[2]);
                 list.addAt(val , idx);
+            }
+            else if(str.startsWith("removeLast")){
+                list.removeLast();
             }
 
 
