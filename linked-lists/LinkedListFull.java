@@ -147,6 +147,26 @@ public class LinkedListFull{
             }
         }
 
+        void removeAt(int idx){
+            if(idx<0 || idx>=size){
+                System.out.println("Invalid Argument");
+            }
+            else if(idx == 0){
+                removeFirst();
+            }
+            else if(idx == size-1){
+                removeLast();
+            }
+            else{
+                Node temp = head;
+                for(int i=0 ; i<idx-1 ; i++){
+                    temp = temp.next;
+                }
+                temp.next = temp.next.next;
+                size--;
+            }
+        }
+
 
 
 
@@ -201,6 +221,10 @@ public class LinkedListFull{
             }
             else if(str.startsWith("removeLast")){
                 list.removeLast();
+            }
+            else if(str.startsWith("removeAt")){
+                int idx = Integer.parseInt(str.split(" ")[1]);
+                list.removeAt(idx);
             }
 
 
