@@ -167,6 +167,33 @@ public class LinkedListFull{
             }
         }
 
+        //Data Iterative
+        Node getNode(int idx){
+            Node temp = head;
+            for(int i=0 ; i<idx ; i++){
+                temp = temp.next;
+            }
+            return temp;
+        }
+
+        void reverseDI(){
+            int li = 0;
+            int ri = size - 1;
+
+            while(li<ri){
+                Node left = getNode(li);
+                Node right = getNode(ri);
+
+                int temp = left.data;
+                left.data = right.data;
+                right.data = temp;
+
+                li++;
+                ri--;
+            }
+        }
+
+
 
 
 
@@ -225,6 +252,10 @@ public class LinkedListFull{
             else if(str.startsWith("removeAt")){
                 int idx = Integer.parseInt(str.split(" ")[1]);
                 list.removeAt(idx);
+            }
+            else if(str.startsWith("reverseDI")){
+                list.reverseDI();
+                list.display();
             }
 
 
