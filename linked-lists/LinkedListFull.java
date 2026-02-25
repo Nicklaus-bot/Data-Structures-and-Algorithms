@@ -193,8 +193,22 @@ public class LinkedListFull{
             }
         }
 
+        //Pointer Iterative
+        void reversePI(){
+            Node curr = head;
+            Node prev = null;
 
+            while(curr != null){
+                Node next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+            }
 
+            Node temp = head;
+            head = tail;
+            tail = temp;
+        }
 
 
     }
@@ -255,6 +269,10 @@ public class LinkedListFull{
             }
             else if(str.startsWith("reverseDI")){
                 list.reverseDI();
+                list.display();
+            }
+            else if(str.startsWith("reversePI")){
+                list.reversePI();
                 list.display();
             }
 
