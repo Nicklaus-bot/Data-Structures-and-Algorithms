@@ -210,6 +210,26 @@ public class LinkedListFull{
             tail = temp;
         }
 
+        int kthEnd(int k){
+            if(k<0 || k>=size){
+                System.out.println("Invalid Argument");
+                return -1;
+            }
+            else{
+                Node slow = head;
+                Node fast = head;
+                for(int i=0 ; i<k ; i++){
+                    fast = fast.next;
+                }
+
+                while(fast.next != null){
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow.data;
+            }
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -274,6 +294,14 @@ public class LinkedListFull{
             else if(str.startsWith("reversePI")){
                 list.reversePI();
                 list.display();
+            }
+            else if(str.startsWith("kthEnd")){
+                int k = Integer.parseInt(str.split(" ")[1]);
+                int val = list.kthEnd(k);
+                if(val != -1){
+                    System.out.println(val);
+                }
+
             }
 
 
