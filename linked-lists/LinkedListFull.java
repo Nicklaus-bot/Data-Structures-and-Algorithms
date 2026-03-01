@@ -230,6 +230,16 @@ public class LinkedListFull{
             }
         }
 
+        public int mid(){
+            Node s = head;
+            Node f = head;
+            while(f.next != null && f.next.next != null){
+                s = s.next;
+                f = f.next.next;
+            }
+            return s.data;
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -301,7 +311,10 @@ public class LinkedListFull{
                 if(val != -1){
                     System.out.println(val);
                 }
-
+            }
+            else if(str.startsWith("mid")){
+                int val = list.mid();
+                System.out.println(val);
             }
 
 
