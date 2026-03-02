@@ -240,11 +240,47 @@ public class LinkedListFull{
             return s.data;
         }
 
+        public LinkedList mergeSortedLL(LinkedList l1 , LinkedList l2){
+            LinkedList sorted = new LinkedList();
+            Node one = l1.head;
+            Node two = l2.head;
+
+            while(one.next != null && two.next != null){
+                if(one.data <= two.data){
+                    sorted.addLast(one.data);
+                    one = one.next;
+                }
+                else{
+                    sorted.addLast(two.data);
+                    two = two.next;
+                }
+            }
+
+            while(one.next != null){
+                sorted.addLast(one.data);
+                one = one.next;
+            }
+
+            while(two.next != null){
+                sorted.addLast(two.data);
+                two = two.next;
+            }
+            return sorted;
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         LinkedList list = new LinkedList();
+
+        LinkedList list2 = new LinkedList();
+        list2.addLast(10);
+        list2.addLast(20);
+        list2.addLast(30);
+        list2.addLast(40);
+        list2.addLast(50);
+
         String str = br.readLine();
 
         while(str.equals("quit") == false){
@@ -317,6 +353,10 @@ public class LinkedListFull{
                 System.out.println(val);
             }
 
+            else if(str.startsWith("mergeSortedLL")){
+                LinkedList sorted = list.mergeSortedLL(list , list2);
+                sorted.display();
+            }
 
             str = br.readLine();
         }
