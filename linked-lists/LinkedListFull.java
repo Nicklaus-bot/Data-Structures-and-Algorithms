@@ -268,18 +268,44 @@ public class LinkedListFull{
             return sorted;
         }
 
+        public Node midNode(Node head , Node tail){
+            Node fast = head;
+            Node slow = head;
+
+            while(fast != tail && fast.next != tail){
+                fast = fast.next.next;
+                slow = slow.next;
+            }
+            return slow;
+        }
+
+        public LinkedList sort(Node head , Node tail){
+            if(head == tail){
+                LinkedList bres = new LinkedList();
+                bres.addLast(head.data);
+                return bres;
+            }
+            Node mid = midNode(head , tail);
+
+            LinkedList fsh = sort(head , mid);
+            LinkedList ssh = sort(mid.next , tail);
+            LinkedList res = mergeSortedLL(fsh , ssh);
+
+            return res;
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         LinkedList list = new LinkedList();
 
-        LinkedList list2 = new LinkedList();
-        list2.addLast(10);
-        list2.addLast(20);
-        list2.addLast(30);
-        list2.addLast(40);
-        list2.addLast(50);
+        //LinkedList list2 = new LinkedList();
+        //list2.addLast(10);
+        //list2.addLast(20);
+        //list2.addLast(30);
+        //list2.addLast(40);
+        //list2.addLast(50);
 
         String str = br.readLine();
 
@@ -355,6 +381,11 @@ public class LinkedListFull{
 
             else if(str.startsWith("mergeSortedLL")){
                 LinkedList sorted = list.mergeSortedLL(list , list2);
+                sorted.display();
+            }
+
+            else if(str.startsWith("sort")){
+                LinkedList sorted = list.sort(list.head , list.tail);
                 sorted.display();
             }
 
