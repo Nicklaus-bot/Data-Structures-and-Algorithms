@@ -294,18 +294,33 @@ public class LinkedListFull{
             return res;
         }
 
+        void removeDuplicates(){
+            LinkedList res = new LinkedList();
+            while(this.size > 0){
+                int val = this.getFirst();
+                this.removeFirst();
+
+                if(this.size == 0 || res.tail.data != val){
+                    res.addLast(val);
+                }
+                this.head = res.head;
+                this.tail = res.tail;
+                this.size = res.size;
+            }
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         LinkedList list = new LinkedList();
 
-        //LinkedList list2 = new LinkedList();
-        //list2.addLast(10);
-        //list2.addLast(20);
-        //list2.addLast(30);
-        //list2.addLast(40);
-        //list2.addLast(50);
+        LinkedList list2 = new LinkedList();
+        list2.addLast(10);
+        list2.addLast(20);
+        list2.addLast(30);
+        list2.addLast(40);
+        list2.addLast(50);
 
         String str = br.readLine();
 
@@ -387,6 +402,10 @@ public class LinkedListFull{
             else if(str.startsWith("sort")){
                 LinkedList sorted = list.sort(list.head , list.tail);
                 sorted.display();
+            }
+            else if(str.startsWith("removeDuplicates")){
+                list.removeDuplicates();
+                list.display();
             }
 
             str = br.readLine();
