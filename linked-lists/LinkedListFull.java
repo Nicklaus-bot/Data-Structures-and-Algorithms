@@ -309,6 +309,40 @@ public class LinkedListFull{
             }
         }
 
+        void oddEven(){
+            LinkedList odd = new LinkedList();
+            LinkedList even = new LinkedList();
+
+            while(this.size > 0){
+                int val = this.getFirst();
+                this.removeFirst();
+
+                if(val%2 == 0){
+                    even.addLast(val);
+                }
+                else{
+                    odd.addLast(val);
+                }
+            }
+
+            if(odd.size!=0 && even.size!=0){
+                this.head = odd.head;
+                odd.tail.next = even.head;
+                this.tail = even.tail;
+                this.size = even.size + odd.size;
+            }
+            else if(odd.size != 0){
+                this.head = odd.head;
+                this.tail = odd.tail;
+                this.size = odd.size;
+            }   
+            else{
+                this.head = even.head;
+                this.tail = even.tail;
+                this.size = even.size;
+            }
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -405,6 +439,10 @@ public class LinkedListFull{
             }
             else if(str.startsWith("removeDuplicates")){
                 list.removeDuplicates();
+                list.display();
+            }
+            else if(str.startsWith("oddEven")){
+                list.oddEven();
                 list.display();
             }
 
