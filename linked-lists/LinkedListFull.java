@@ -294,7 +294,7 @@ public class LinkedListFull{
             return res;
         }
 
-        void removeDuplicates(){
+        public void removeDuplicates(){
             LinkedList res = new LinkedList();
             while(this.size > 0){
                 int val = this.getFirst();
@@ -309,7 +309,7 @@ public class LinkedListFull{
             }
         }
 
-        void oddEven(){
+        public void oddEven(){
             LinkedList odd = new LinkedList();
             LinkedList even = new LinkedList();
 
@@ -340,6 +340,47 @@ public class LinkedListFull{
                 this.head = even.head;
                 this.tail = even.tail;
                 this.size = even.size;
+            }
+        }
+
+        public void kReverse(int k){
+            if(k<=0){
+                System.out.println("Invalid Argument");
+                return;
+            }
+            else{
+                LinkedList prev = null;
+                while(this.size > 0){
+                    LinkedList curr = new LinkedList();
+
+                    if(this.size>=k){
+                        for(int i=0 ; i<k ; i++){
+                            int val = this.getFirst();
+                            this.removeFirst();
+                            curr.addFirst(val);
+                        }
+                    }
+                    else{
+                        int os = this.size;
+                        for(int i=0 ; i<os ; i++){
+                            int val = this.getFirst();
+                            this.removeFirst();
+                            curr.addLast(val);
+                        }
+                    }
+
+                    if(prev == null){
+                        prev = curr;
+                    }
+                    else{
+                        prev.tail.next = curr.head;
+                        prev.tail = curr.tail;
+                        prev.size += curr.size;
+                    }
+                }
+                this.head = prev.head;
+                this.tail = prev.tail;
+                this.size = prev.size;
             }
         }
 
@@ -443,6 +484,11 @@ public class LinkedListFull{
             }
             else if(str.startsWith("oddEven")){
                 list.oddEven();
+                list.display();
+            }
+            else if(str.startsWith("kReverse")){
+                int val = Integer.parseInt(str.split(" ")[1]);
+                list.kReverse(val);
                 list.display();
             }
 
