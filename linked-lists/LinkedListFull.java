@@ -384,6 +384,19 @@ public class LinkedListFull{
             }
         }
 
+        private void displayReverseHelper(Node node){
+            if(node == null){
+                return;
+            }
+            displayReverseHelper(node.next);
+            System.out.print(node.data + "\t");
+        }
+
+        public void displayReverse(){
+            displayReverseHelper(head);
+            System.out.println();
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -490,6 +503,9 @@ public class LinkedListFull{
                 int val = Integer.parseInt(str.split(" ")[1]);
                 list.kReverse(val);
                 list.display();
+            }
+            else if(str.startsWith("displayReverse")){
+                list.displayReverse();
             }
 
             str = br.readLine();
