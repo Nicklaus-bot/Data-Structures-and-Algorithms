@@ -397,6 +397,22 @@ public class LinkedListFull{
             System.out.println();
         }
 
+        private void reverseLLPRHelper(Node node){
+            if(node == tail){
+                return;
+            }
+            reverseLLPRHelper(node.next);
+            node.next.next = node;
+            node.next = null;
+        }
+
+        public void reverseLLPR(){
+            reverseLLPRHelper(head);
+            Node temp = head;
+            head = tail;
+            tail = temp;
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -506,6 +522,10 @@ public class LinkedListFull{
             }
             else if(str.startsWith("displayReverse")){
                 list.displayReverse();
+            }
+            else if(str.startsWith("reverseLLPR")){
+                list.reverseLLPR();
+                list.display();
             }
 
             str = br.readLine();
