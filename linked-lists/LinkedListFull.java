@@ -413,6 +413,30 @@ public class LinkedListFull{
             tail = temp;
         }
 
+        Node left = head;
+        public void reverseLLDRHelper(Node node , int floor){
+            if(node == null){
+                return;
+            }
+            reverseLLDRHelper(node.next , floor + 1);
+
+            if(floor>=size/2){
+                int temp = left.data;
+                left.data = node.data;
+                node.data = temp;
+                left = left.next;
+            }
+        }
+
+        public void reverseLLDR(){
+            reverseLLDRHelper(head , 0);
+            Node temp = head;
+            head = tail;
+            tail = temp;
+
+            display();
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -526,6 +550,9 @@ public class LinkedListFull{
             else if(str.startsWith("reverseLLPR")){
                 list.reverseLLPR();
                 list.display();
+            }
+            else if(str.startsWith("reverseLLDR")){
+                list.reverseLLDR();
             }
 
             str = br.readLine();
