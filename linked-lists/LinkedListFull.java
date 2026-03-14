@@ -437,6 +437,29 @@ public class LinkedListFull{
             display();
         }
 
+        Node pleft;
+        private boolean palindromeHelper(Node node){
+            if(node == null){
+                return true;
+            }
+
+            boolean val = palindromeHelper(node.next);
+
+            if(val == true && pleft.data == node.data){
+                pleft = pleft.next;
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public boolean palindrome(){
+            pleft = head;
+            boolean val = palindromeHelper(head);
+            return val;
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -553,6 +576,10 @@ public class LinkedListFull{
             }
             else if(str.startsWith("reverseLLDR")){
                 list.reverseLLDR();
+            }
+            else if(str.startsWith("palindrome")){
+                boolean val = list.palindrome();
+                System.out.println(val);
             }
 
             str = br.readLine();
