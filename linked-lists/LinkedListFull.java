@@ -460,6 +460,32 @@ public class LinkedListFull{
             return val;
         }
 
+        Node fleft;
+        private void foldLLHelper(Node node , int floor){
+            if(node == null){
+                return;
+            }
+
+            foldLLHelper(node.next , floor + 1);
+
+            if(floor > size/2){
+                Node temp = fleft.next;
+                fleft.next = node;
+                node.next = temp;
+                fleft = temp;
+            }
+            else if(floor == size/2){
+                fleft.next = null;
+                tail = fleft;
+            }
+        }
+
+        public void foldLL(){
+            fleft = head;
+            foldLLHelper(head , 0);
+            display();
+        }
+
 
     }
     public static void main(String[]args) throws Exception{
@@ -580,6 +606,9 @@ public class LinkedListFull{
             else if(str.startsWith("palindrome")){
                 boolean val = list.palindrome();
                 System.out.println(val);
+            }
+            else if(str.startsWith("foldLL")){
+                list.foldLL();
             }
 
             str = br.readLine();
