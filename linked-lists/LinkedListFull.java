@@ -486,6 +486,39 @@ public class LinkedListFull{
             display();
         }
 
+        private int addLLHelper(Node one , int pv1 , Node two , int pv2 , LinkedList res){
+            if(one == null && two == null){
+                return 0;
+            }
+            int data = 0;
+
+            if(pv1 > pv2){
+                int oc = addLLHelper(one.next , pv1 - 1 , two , pv2 , res);
+                data = one.data + oc;
+            }
+            else if(pv1 < pv2){
+                int oc = addLLHelper(one , pv1 , two.next , pv2 - 1 , res);
+                data = two.data + oc;
+            }
+            else{
+                int oc = addLLHelper(one.next , pv1 - 1 , two.next , pv2 - 1 , res);
+                data = one.data + two.data + oc;
+            }
+
+            int np = data%10;
+            int nc = data/10;
+            res.addFirst(np);
+            return nc;
+        }
+
+        public LinkedList addLL(LinkedList l1 , LinkedList l2){
+            LinkedList res = new LinkedList();
+            int oc = addLLHelper(l1.head , l1.size , l2.head , l2.size , res);
+            if(oc > 0){
+                res.addFirst(oc);
+            }
+            return res;
+        }
 
     }
     public static void main(String[]args) throws Exception{
@@ -493,11 +526,11 @@ public class LinkedListFull{
         LinkedList list = new LinkedList();
 
         LinkedList list2 = new LinkedList();
-        list2.addLast(10);
-        list2.addLast(20);
-        list2.addLast(30);
-        list2.addLast(40);
-        list2.addLast(50);
+        list2.addLast(1);
+        list2.addLast(2);
+        list2.addLast(3);
+        list2.addLast(4);
+        list2.addLast(5);
 
         String str = br.readLine();
 
@@ -610,6 +643,11 @@ public class LinkedListFull{
             else if(str.startsWith("foldLL")){
                 list.foldLL();
             }
+            else if(str.startsWith("addLL")){
+                LinkedList res = list.addLL(list , list2);
+                res.display();
+            }
+
 
             str = br.readLine();
         }
