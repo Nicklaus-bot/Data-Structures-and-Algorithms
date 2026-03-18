@@ -30,6 +30,21 @@ public class GenericTreeFull{
         return root;
     }
 
+    public static void display(Node node){
+        if(node == null){
+            return;
+        }
+
+        String str = node.data + " --> ";
+
+        for(Node child : node.children){
+            str += child.data + " , ";
+        }
+        System.out.println(str + " . ");
+        for(Node child : node.children){
+            display(child);
+        }
+    }
     public static void main(String [] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -41,6 +56,10 @@ public class GenericTreeFull{
         }
 
         Node root = construct(arr);
+
+        display(root);
+
+     
 
     }
 }
