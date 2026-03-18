@@ -45,6 +45,25 @@ public class GenericTreeFull{
             display(child);
         }
     }
+
+    public static int size(Node node){
+        if(node == null){
+            return 0;
+        }
+
+        int s = 0;
+        for(Node child : node.children){
+            s += size(child);
+        }
+        s += 1;
+        return s;
+    }
+
+
+    
+
+
+
     public static void main(String [] args) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -55,11 +74,15 @@ public class GenericTreeFull{
             arr[i] = Integer.parseInt(vals[i]);
         }
 
+        // 10 20 50 -1 60 -1 -1 30 70 -1 80 110 -1 120 -1 -1 90 -1 -1 40 100 -1 -1 -1
+
         Node root = construct(arr);
 
         display(root);
 
-     
+        int s = size(root);
+        System.out.println(s);
+
 
     }
 }
