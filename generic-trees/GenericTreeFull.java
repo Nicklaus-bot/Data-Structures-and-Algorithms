@@ -79,6 +79,16 @@ public class GenericTreeFull{
         return ht;
     }
 
+    public static void traversal(Node node){
+        System.out.println("Pre Node " + node.data);
+        for(Node child : node.children){
+            System.out.println("Pre Edge " + node.data + " -- "  +  child.data);
+            traversal(child);
+            System.out.println("Post Node " + child.data + " -- " +  node.data);
+        }
+        System.out.println("Post Node " + node.data);
+    }
+
 
     
 
@@ -108,6 +118,8 @@ public class GenericTreeFull{
 
         int h = height(root);
         System.out.println(h);
+
+        traversal(root);
 
 
 
