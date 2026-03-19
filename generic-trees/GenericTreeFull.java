@@ -59,6 +59,17 @@ public class GenericTreeFull{
         return s;
     }
 
+    public static int max(Node node){
+        int max = Integer.MIN_VALUE;
+        for(Node child : node.children){
+            int cm = max(child);
+            max = Math.max(max , cm);
+        }
+        max = Math.max(max , node.data);
+        return max;
+
+    }
+
 
     
 
@@ -82,6 +93,10 @@ public class GenericTreeFull{
 
         int s = size(root);
         System.out.println(s);
+
+        int m = max(root);
+        System.out.println(m);
+
 
 
     }
