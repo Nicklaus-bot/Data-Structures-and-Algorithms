@@ -124,6 +124,36 @@ public class GenericTreeFull{
         }
     }
 
+    public static void zigzag(Node node){
+        Stack<Node> ms = new Stack<>();
+        Stack<Node> cs = new Stack<>(); 
+        int lvl = 1;
+
+        ms.push(node);
+        while(ms.size() > 0){
+            node = ms.pop();
+            System.out.print(node.data + " ");
+
+            if(lvl % 2 != 0){
+                for(int i=0 ; i<node.children.size() ; i++){
+                    cs.push(node.children.get(i));
+                }
+            }
+            else{
+                for(int i=node.children.size() - 1 ; i>=0 ; i--){
+                    cs.push(node.children.get(i));
+                }
+            }
+
+            if(ms.size() == 0){
+                ms = cs;
+                cs = new Stack<>();
+                lvl++;
+                System.out.println();
+            }
+        }
+    }
+
 
 
     public static void main(String [] args) throws Exception{
@@ -156,6 +186,8 @@ public class GenericTreeFull{
         levelOrder(root);
 
         linewise1(root);
+
+        zigzag(root);
 
 
 
