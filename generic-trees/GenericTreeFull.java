@@ -104,8 +104,25 @@ public class GenericTreeFull{
         System.out.print(" . ");
     }
 
+    public static void linewise1(Node node){
+        Queue<Node> mq = new ArrayDeque<>();
+        Queue<Node> cq = new ArrayDeque<>();
+        mq.add(node);
 
-    
+        while(mq.size() > 0){
+            node = mq.remove();
+            System.out.print(node.data + " ");
+
+            for(Node child : node.children){
+                cq.add(child);
+            }
+            if(mq.size() == 0){
+                System.out.println();
+                mq = cq;
+                cq = new ArrayDeque<>();
+                }
+        }
+    }
 
 
 
@@ -137,6 +154,8 @@ public class GenericTreeFull{
         traversal(root);
 
         levelOrder(root);
+
+        linewise1(root);
 
 
 
