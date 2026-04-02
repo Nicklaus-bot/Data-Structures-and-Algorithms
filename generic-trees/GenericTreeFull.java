@@ -4,6 +4,14 @@ public class GenericTreeFull{
     public static class Node{
         int data;
         ArrayList<Node> children = new ArrayList<>();
+
+        Node(){
+
+        } 
+
+        Node(int data){
+            this.data = data;
+        }
     }
 
     public static Node construct(int [] arr){
@@ -153,6 +161,33 @@ public class GenericTreeFull{
             }
         }
     }
+
+    public static void linewise2(Node node){
+        Queue<Node> mq = new ArrayDeque<>();
+        mq.add(node);
+        mq.add(new Node(-1));
+
+        while(mq.size() > 0){
+            node = mq.remove();
+
+            if(node.data != -1){
+                System.out.print(node.data + " ");
+                for(Node child : node.children){
+                    mq.add(child);
+                }
+            }
+            else{
+                System.out.println();
+                if(mq.size() > 0){
+                mq.add(new Node(-1));
+                }
+            }
+        }
+    }
+
+    
+
+
 
 
 
