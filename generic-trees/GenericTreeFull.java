@@ -185,9 +185,22 @@ public class GenericTreeFull{
         }
     }
 
-    
+    public static void linewise3(Node node){
+        Queue<Node> mq = new ArrayDeque<>();
+        mq.add(node);
 
-
+        while(mq.size() > 0){
+            int size = mq.size();
+            for(int i=0 ; i<size ; i++){
+                node = mq.remove();
+                System.out.print(node.data + " ");
+                for(Node child : node.children){
+                    mq.add(child);
+                }
+            }
+            System.out.println();
+        }
+    }
 
 
 
@@ -223,6 +236,10 @@ public class GenericTreeFull{
         linewise1(root);
 
         zigzag(root);
+
+        linewise2(root);
+
+        linewise3(root);
 
 
 
