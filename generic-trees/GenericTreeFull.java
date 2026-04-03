@@ -202,6 +202,44 @@ public class GenericTreeFull{
         }
     }
 
+    private static class Pair{
+        Node node;
+        int data;
+
+        Pair(Node node ,int data){
+            this.node = node;
+            this.data = data;
+        }
+    }
+
+    public static void linewise4(Node node){
+        Queue<Pair> mq = new ArrayDeque<>();
+        Pair p = new Pair(node , 1);
+        int lvl = 1;
+        mq.add(p);
+
+        while(mq.size() > 0){
+            p = mq.remove();
+
+            if(p.data > lvl){
+                lvl = p.data;
+                System.out.println();
+            }
+            System.out.print(p.node.data + " ");
+            for(Node child : p.node.children){
+                Pair cp = new Pair(child , p.data + 1);
+                mq.add(cp);
+            }
+        }
+    }
+
+     public static void mirror(Node node){
+        for(Node child : node.children){
+            mirror(child);
+        }
+        Collections.reverse(node.children);
+    }
+
 
 
     public static void main(String [] args) throws Exception{
@@ -240,6 +278,12 @@ public class GenericTreeFull{
         linewise2(root);
 
         linewise3(root);
+
+        linewise4(root);
+
+        mirror(root);
+
+        
 
 
 
