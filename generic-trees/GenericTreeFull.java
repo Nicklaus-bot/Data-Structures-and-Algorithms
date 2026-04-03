@@ -254,6 +254,25 @@ public class GenericTreeFull{
         }
     }
 
+    private static Node getLast(Node node){
+        while(node.children.size() == 1){
+            node = node.children.get(0);
+        }
+        return node;
+    }
+    public static void linearise1(Node node){
+        for(Node child : node.children){
+            linearise1(child);
+        }
+
+        while(node.children.size() > 1){
+            Node lc = node.children.remove(node.children.size() -1 );
+            Node slc = node.children.get(node.children.size() - 1);
+            Node slt = getLast(slc);
+            slt.children.add(lc);
+        }
+    }
+
 
 
     public static void main(String [] args) throws Exception{
@@ -270,36 +289,38 @@ public class GenericTreeFull{
 
         Node root = construct(arr);
 
-        display(root);
+        //display(root);
 
-        int s = size(root);
-        System.out.println(s);
+        //int s = size(root);
+        //System.out.println(s);
 
-        int m = max(root);
-        System.out.println(m);
+        //int m = max(root);
+        //System.out.println(m);
 
-        int h = height(root);
-        System.out.println(h);
+        //int h = height(root);
+        //System.out.println(h);
 
-        traversal(root);
+        //traversal(root);
 
-        levelOrder(root);
+        //levelOrder(root);
 
-        linewise1(root);
+        //linewise1(root);
 
-        zigzag(root);
+        //zigzag(root);
 
-        linewise2(root);
+        //linewise2(root);
 
-        linewise3(root);
+        //linewise3(root);
 
-        linewise4(root);
+        //linewise4(root);
 
-        mirror(root);
+        //mirror(root);
 
-        removeleaves(root);
+        //removeleaves(root);
 
-        
+        linearise1(root);
+
+
 
 
 
