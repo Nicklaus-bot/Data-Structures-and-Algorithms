@@ -273,6 +273,21 @@ public class GenericTreeFull{
         }
     }
 
+    public static Node linearise2(Node node){
+        if(node.children.size() == 0){
+            return node;
+        }
+
+        Node lkt = linearise2(node.children.get(node.children.size() - 1));
+        while(node.children.size() > 1){
+            Node last = node.children.remove(node.children.size() - 1);
+            Node sl = node.children.get(node.children.size() - 1);
+            Node slt = linearise2(sl);
+            slt.children.add(last);
+        }
+        return lkt;
+    }
+
 
 
     public static void main(String [] args) throws Exception{
@@ -318,8 +333,9 @@ public class GenericTreeFull{
 
         //removeleaves(root);
 
-        linearise1(root);
+        //linearise1(root);
 
+        linearise2(root);
 
 
 
