@@ -288,6 +288,20 @@ public class GenericTreeFull{
         return lkt;
     }
 
+    public static boolean findnode(Node node , int data){
+        if(node.data == data){
+            return true;
+        }
+
+        for(Node child : node.children){
+            if(findnode(child , data)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 
 
     public static void main(String [] args) throws Exception{
