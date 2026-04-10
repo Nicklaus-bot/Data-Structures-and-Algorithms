@@ -301,6 +301,41 @@ public class GenericTreeFull{
         return false;
     }
 
+    public static ArrayList<Integer> nodetoroot(Node node , int data){
+        if(node.data == data){
+            ArrayList<Integer> path = new ArrayList<>();
+            path.add(node.data);
+            return path;
+        }
+
+        for(Node child : node.children){
+            ArrayList<Integer> ptc = nodetoroot(child , data);
+            if(ptc.size() > 0){
+                ptc.add(node.data);
+                return ptc;
+            }
+        }
+
+        return new ArrayList<>();
+    }
+
+    public static int lowestcommonancestor(Node node , int data1 , int data2){
+        ArrayList<Integer> l1 = nodetoroot(node , data1);
+        ArrayList<Integer> l2 = nodetoroot(node , data2);
+
+        int i = l1.size()-1;
+        int j = l2.size()-1;
+
+        while(i>=0 && j>=0 && l1.get(i)==l2.get(j)){
+            i--;
+            j--;
+        }
+        i++;
+        j++;
+
+        return l1.get(i);
+    }
+
 
 
 
