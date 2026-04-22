@@ -1,0 +1,83 @@
+import java.io.*;
+import java.util.*;
+public class SymmetricTree{
+    public static class Node{
+        int data;
+        ArrayList<Node> children = new ArrayList<>();
+    }
+
+    public static Node construct(int [] arr){
+        Node root = null;
+        Stack<Node> st = new Stack<>();
+        for(int i=0 ; i<arr.length ; i++){
+            if(arr[i] == -1){
+                st.pop();
+            }
+            else{
+                Node t = new Node();
+                t.data = arr[i];
+
+                if(st.size() > 0){
+                    st.peek().children.add(t);
+                }
+                else{
+                    root = t;
+                }
+                st.push(t);
+            }
+        }
+        return root;
+    }
+
+    public static void display(Node node){
+        String str = node.data + " ---> ";
+        for(Node child : node.children){
+            str += child.data + " , ";
+        }
+        str += " . ";
+        System.out.println(str);
+
+        for(Node child : node.children){
+            display(child);
+        }
+    }
+
+    public static boolean aremirror(Node n1 , Node n2){
+        if(n1.children.size() != n2.children.size()){
+            return false;
+        }
+
+        for(int i=0 ; i<n1.children.size() ; i++){
+            int j = n1.children.size() - 1 - i;
+            Node c1 = n1.children.get(i);
+            Node c2 = n2.children.get(j);
+
+            if(aremirror(c1 , c2) == false){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void Symmetric(Node n){
+        boolean val = aremirror(n , n);
+        System.out.println(val);
+    }
+
+    
+    public static void main(String[]args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        int n1 = Integer.parseInt(br.readLine());
+        int [] arr1 = new int [n1];
+        String [] values1 = br.readLine().split(" ");
+        for(int i=0 ; i<n1 ; i++){
+            arr1[i] = Integer.parseInt(values1[i]);
+        }
+        Node root1 = construct(arr1);
+
+        Symmetric(root1);
+
+
+    }
+}
